@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Roll</title>
+    <script defer src="Dicegame.js"></script>
+    
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('cardgamebackground.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .button {
+
+        }
+        
+        #title {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #dice-roller {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1em;
+            margin: 20px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: #f51b77;
+        }
+
+        #die-1, #die-2 {
+            font-size: large;
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            align-items: center;
+            position: absolute;
+            top: 40%;
+            left: 37.5%;
+            display: flex;
+            flex-direction: column;
+            padding: 50px;
+            background-color: #ba9e7d;
+            color: #860000;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .dicewrapper {
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(50deg); }
+            50% { transform: rotate(-50deg); }
+            100% { transform: rotate(50deg); }
+        }
+    </style>
+</head>
+
+<body>
+  
+
+    <div id="title">
+        <header>
+            <h1>Dice Game</h1>
+        </header>
+    </div>
+
+    <main>
+        <section>
+            <div id="dice-roller">
+                <div class="container">
+                    <div class="dicewrapper">
+                        <img id="die-1" src="die1.gif" alt="Die 1">
+                        <img id="die-2" src="die2.gif" alt="Die 2">
+                    </div>
+                    <h2>Click to roll</h2>  
+                    <button onclick="roll(); playSound()">Roll The Dice</button>
+                    <p id="total">TOTAL</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <audio id="mySound" src="dice-142528.mp3"></audio>
+
+<script>
+    function playSound() {
+        const sound = document.getElementById("mySound");
+        sound.play();
+    }
+
+    function roll() {
+        const dieOneValue = Math.floor(Math.random() * 6) + 1; 
+        const dieTwoValue = Math.floor(Math.random() * 6) + 1;
+        document.querySelector("#total").innerHTML = "You rolled a " + (dieOneValue + dieTwoValue);
+    }
+</script>
+
+</body>
+    
+</html>
+
+
+    
+    
